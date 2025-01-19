@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@model IEnumerable<Factory_Management_System_MVC_2.Areas.Admin.Models.ProductModel>
+<div class="page-inner">
+
+    <div class="row">
+        <div class="card">
+            <div class="card-header">
+                <div class="d-flex justify-content-between">
+                    <div class="card-title h2"><span class="h2 font-weight-bold">Product List</span></div>
+                    <div><a class="text-white text-decoration-none h5 btn btn-primary" asp-area="Admin" asp-controller="Product" asp-action="Add">Add</a></div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped mt-3 fs-5 ">
+                        <!-- fs-5 sets font size -->
+                        <thead class="h2">
+                            <tr>
+                                <th scope="col"><span class="h4 text-capitalize">ID</span></th>
+                                <th scope="col"><span class="h4 text-capitalize">Name</span></th>
+                                <th scope="col"><span class="h4 text-capitalize">Material</span></th>
+                                <th scope="col"><span class="h4 text-capitalize">Price</span></th>
+                                <th scope="col"><span class="h4 text-capitalize">Edit<span></th>
+                                <th scope="col"><span class="h4 text-capitalize">Delete<span></th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var p in Model)
+                            {
+                                <tr class="p-2">
+                                    <td><span class="h5">@p.ProductID</span></td>
+                                    <td><span class="h5">@p.ProductName</span></td>
+                                    <td><span class="h5">@p.Material</span></td>
+                                    <td><span class="h5">@p.Price</span></td>
+                                    <td class="p-0" style="width:10px">
+                                        <button class="btn btn-warning">
+                                            <a asp-action="Add" asp-route-ProductID="@p.ProductID" class="text-decoration-none text-white"><i class="fa-solid fa-pen"></i></a>
+                                        </button>
+                                    </td>
+                                    <td style="width:10px" class="p-0"><button class="btn btn-danger"><i class="fa-solid fa-trash"></i></button></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
